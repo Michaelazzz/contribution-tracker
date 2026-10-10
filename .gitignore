@@ -1,0 +1,16 @@
+# Local configuration and secrets
+config.json
+.github_cache.json
+
+# Generated reports and build artifacts
+output/
+*.aux
+*.log
+*.pdf
+*.out
+*.synctex.gz
+
+# OS/editor noise
+.DS_Store
+*.swp
+*.tmp
