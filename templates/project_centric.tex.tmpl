@@ -1,0 +1,87 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.0cm]{geometry}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+
+\definecolor{primary}{RGB}{31, 41, 55}
+\definecolor{accent}{RGB}{37, 99, 235}
+\definecolor{boxbg}{RGB}{249, 250, 251}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent
+}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear default header/footer
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\cfoot{\footnotesize \textcolor{gray}{Generated automatically via \href{https://github.com/Michaelazzz/contribution-tracker}{contribution-tracker} | Candidate: \textbf{ {{.Username}} }}}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Open Source Contribution Portfolio}} \\[0.5em]
+    {\large \textsf{Engineering Portfolio | Candidate: \textbf{ {{.Username}} }}} \\[1em]
+    \hrule
+\end{center}
+
+\vspace{0.5em}
+
+\section*{Architectural Footprint \& Repositories}
+This portfolio highlights core engineering contributions, structured by project scope, tech stack, and impact.
+
+{{range .RepoGroups}}
+\begin{tcolorbox}[colback=boxbg,colframe=primary!40,arc=2mm,boxrule=0.5pt,top=6pt,bottom=6pt]
+    \textbf{\large \texttt{ {{.Name}} }}
+    {{if .TechStack}}
+        \hfill \textit{\small [{{range $i, $t := .TechStack}}{{if $i}} • {{end}}{{$t}}{{end}}]}
+    {{end}}
+
+    {{if .Summary}}
+        \vspace{0.3em}
+        \small {{.Summary}}
+    {{end}}
+
+    \vspace{0.4em}
+    \hrule
+    \vspace{0.4em}
+
+    \textbf{Key Pull Request Contributions:}
+    \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    {{range .PRs}}
+        \item \href{ {{.URL}} }{ { {{.Title}} } } 
+        {{if .Merged}}\textit{\footnotesize (Merged)}{{else}}\textit{\footnotesize (Open)}{{end}}
+    {{end}}
+    \end{itemize}
+\end{tcolorbox}
+\vspace{0.5em}
+{{end}}
+
+\newpage
+
+\section*{Selected Personal Projects}
+This section highlights independent engineering and research tooling projects developed outside of open-source contributions.
+
+{{range .PersonalProjects}}
+\begin{tcolorbox}[colback=boxbg,colframe=accent!40,arc=2mm,boxrule=0.5pt,top=6pt,bottom=6pt]
+    \textbf{\large \texttt{ {{.Name}} }}
+    {{if .TechStack}}
+        \hfill \textit{\small [{{range $i, $t := .TechStack}}{{if $i}} • {{end}}{{$t}}{{end}}]}
+    {{end}}
+
+    \vspace{0.3em}
+    \small {{.Description}}
+
+    \vspace{0.4em}
+    \href{ {{.URL}} }{Repository / Source Link}
+\end{tcolorbox}
+\vspace{0.5em}
+{{end}}
+
+\end{document}

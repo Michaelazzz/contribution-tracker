@@ -1,0 +1,54 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\definecolor{primary}{RGB}{31, 41, 55}
+\definecolor{accent}{RGB}{37, 99, 235}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent
+}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{Contribution Portfolio}} \\[0.5em]
+    {\large \textsf{Prepared for IDIA Application | Candidate: {{.Username}}}} \\[1em]
+    \hrule
+\end{center}
+
+\section*{Executive Summary}
+This document outlines my public contributions to open-source software, research tooling, and community repositories. These contributions demonstrate active engagement with distributed development workflows, code review standards, and collaborative engineering practices.
+
+\section*{Contribution Metrics}
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric Type} & \textbf{Total Count} \\
+\midrule
+Total Commit Contributions & {{.TotalCommits}} \\
+Pull Request Contributions & {{.TotalPRs}} \\
+Issue Contributions & {{.TotalIssues}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Recent High-Impact Pull Requests}
+\begin{itemize}
+{{range .TopPRs}}
+    \item \textbf{ {{.RepoName}} }: \href{ {{.URL}} }{ {{.Title}} } -- {{if .Merged}}\textit{Merged}{{else}}\textit{Open/Closed}{{end}}
+{{end}}
+\end{itemize}
+
+\vfill
+\begin{center}
+    \footnotesize \textcolor{gray}{Generated automatically via \href{https://github.com/Michaelazzz/contribution-tracker}{contribution-tracker}} made by \href{https://github.com/Michaelazzz}{Michaelazzz}.
+\end{center}
+
+\end{document}
